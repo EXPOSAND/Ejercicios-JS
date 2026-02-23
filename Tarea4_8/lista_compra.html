@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de la Compra</title>
+
+    <script>
+      function pintarLista() {
+        let lista = parent.listaDeCompra; //Guardo mi listica
+        let contenedor = document.getElementById("miLista");
+
+        // Reinicio la lista para que no salga el mensaje de lista vacia
+        contenedor.innerHTML = "";
+
+        for (let i = 0; i < lista.length; i++) {
+          let producto = lista[i];
+          let item = document.createElement("li");
+          //Guardo el texto
+          item.innerHTML = producto.nombre;
+            
+          item.onclick = function () {
+            let ventana = window.open("", "Detalle", "width=300,height=200");
+            ventana.document.write("<h3>" + producto.nombre + "</h3>");
+            ventana.document.write(
+              "<p>Calorías: " + producto.calorias + "</p>"
+            );
+            ventana.document.write(
+              "<p>Caducidad: " + producto.caducidad + "</p>"
+            );
+          };
+
+          //Lo muestrfo
+          contenedor.appendChild(item);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2 style="color: steelblue">Lista de la Compra</h2>
+    <ul id="miLista">
+      <li>Lista vacia...</li>
+    </ul>
+  </body>
+</html>

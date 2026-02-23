@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarea 4.8</title>
+    <script>
+        var listaDeCompra = []; 
+        var registroAcciones = [];
+
+        // Función para registrar acciones
+        function registrarAccion(descripcion) {
+            var fecha = new Date(); //Fecha compra
+            var texto = fecha.toLocaleString() + " - " + descripcion; //Descripcion compra
+            registroAcciones.push(texto); //Mete todo esto en el array que luego muestra en el regitro
+            if(window.frames['marcoAcciones'] && window.frames['marcoAcciones'].actualizarVista) { //Hay qe llamarlo para que muestre en el frame de acciones
+                window.frames['marcoAcciones'].actualizarVista();
+            }
+        }
+    </script>
+</head>
+
+<frameset cols="*,*,*,*,*">
+    <frame src="productos.html" name="marcoProductos">
+    <frame src="lista_compra.html" name="marcoLista">
+    <frame src="eliminar.html" name="marcoEliminar">
+    <frame src="ordenar.html" name="marcoOrdenar">
+    <frame src="acciones.html" name="marcoAcciones">
+</frameset>
+</html>

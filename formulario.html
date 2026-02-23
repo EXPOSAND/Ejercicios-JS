@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Formulario</title>
+    <script src="./jquery-3.7.1.min.js" ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <form id="addStudent">
+      <input type="text" id="nombre" placeholder="Nombre" />
+      <input type="text" id="apellido1" placeholder="Primer Apellido" />
+      <input type="text" id="apellido2" placeholder="Segundo Apellido" />
+      <input type="date" id="fecha" placeholder="Fecha de Nacimiento" />
+      <button type="submit">Añadir Alumno</button>
+    </form>
+    <div id="SelecClass" style="margin: 20px;">
+      <table border="1px" style="border-collapse: collapse">
+        <tbody id="tableBody">
+          <tr>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha de Nacimiento</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+  <script>
+    const buttonForm = document.getElementById("addStudent");
+    const nombreUser = document.getElementById("nombre");
+    const apellido1User = document.getElementById("apellido1");
+    const apellido2User = document.getElementById("apellido2");
+    const fechaUser = document.getElementById("fecha");
+
+    var listaAlumnos = new Array();
+
+    function calcularEdad(anio){
+        return 2025-parseInt(anio);
+    }
+    //Asi se crea un objeto en JavaScript
+    function Alumnos(nombre, apellido1, apellido2, fecha) {
+      this.nombre = nombre;
+      this.apellido1 = apellido1;
+      this.apellido2 = apellido2;
+      this.fecha = fecha;
+    }
+    buttonForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita que se recargue la página al enviar el formulario
+      let apellidos = [apellido1User.value, apellido2User.value];
+      let alumno = new Alumnos(nombreUser.value, apellidos, fechaUser.value);
+      listaAlumnos.push(alumno);
+      alert(nombreUser.value);
+    });
+  </script>
+</html>

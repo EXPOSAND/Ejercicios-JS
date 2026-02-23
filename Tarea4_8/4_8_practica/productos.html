@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Productos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <h1>Lista de la compra</h1>
+    <strong>Manzana</strong>
+    <input type="button" value="Comprar" onclick="parent.añadirProductos('manzana')">
+    <input type="button" value="Eliminar" onclick="parent.eliminarProductos('manzana')"><br><br>
+    <strong>Platano</strong>
+    <input type="button" value="Comprar" onclick="parent.añadirProducto('platano')">
+    <input type="button" value="Eliminar" onclick="parent.eliminarProductos('manzana')"><br><br>
+    <strong>Mango</strong>
+    <input type="button" value="Comprar" onclick="parent.añadirProducto('mango')">
+    <input type="button" value="Eliminar" onclick="parent.eliminarProductos('manzana')"><br><br>
+
+    <ul id="listaCompra"></ul>
+</body>
+</html>

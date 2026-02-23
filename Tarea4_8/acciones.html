@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historial de Acciones</title>
+    <script>
+        function actualizarVista() {
+            let acciones = parent.registroAcciones;
+            let listaAcciones = document.getElementById("listaAcciones");
+            
+            listaAcciones.innerHTML = "";
+
+            for (let i = 0; i < acciones.length; i++) {
+                //Creo mi li pa que se vea bonito
+                let item = document.createElement("li");
+                item.innerHTML = acciones[i];
+                listaAcciones.appendChild(item);
+            }
+        }
+        //Cuando rrcarga actualiza
+        window.onload = actualizarVista;
+    </script>
+</head>
+<body>
+    <h2 style="color: steelblue">Registro de Acciones</h2>
+    <ul id="listaAcciones"></ul>
+</body>
+</html>

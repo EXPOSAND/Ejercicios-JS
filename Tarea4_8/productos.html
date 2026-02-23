@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Productos</title>
+    <script>
+        //Funcion de crear objeto, no confundir
+      function comprar(nombre, calorias, caducidad) {
+        var nuevoProducto = {
+          nombre: nombre,
+          calorias: calorias,
+          caducidad: caducidad,
+        };
+
+        //El parent llama al array que esta en el index (padre)
+        parent.listaDeCompra.push(nuevoProducto);
+
+        //llamando metodo que esta en el index tambien
+        parent.registrarAccion("Se añadió: " + nombre);
+        parent.frames['marcoLista'].pintarLista(); //Asi llamamos a los metodos del "hermano"
+      }
+    </script>
+  </head>
+  <body>
+    <h2 style="color: steelblue">Productos</h2>
+    <p>Haz clic para añadir:</p>
+
+    <strong>Manzana</strong><br />
+    Calorías: 29 | Cad: 21-12-2025<br />
+    <!--Boton que llama metodo comprar que crea el objeto, lo añadre al array y luego lo agrega a la lista. Ver explicacion de arriba-->
+    <button onclick="comprar('Manzana', 29, '21-12-2025')">Añadir al carro</button><br>
+
+    <strong>Leche</strong><br />
+    Calorías: 35 | Cad: 7-12-2025<br />
+    <button onclick="comprar('Leche', 35, '7-12-2025')">Añadir al carro</button><br>
+
+    <strong>Pan</strong><br />
+    Calorías: 147 | Cad: 13-12-2025<br />
+    <button onclick="comprar('Pan', 147, '13-12-2025')">Añadir al carro</button><br>
+  </body>
+</html>

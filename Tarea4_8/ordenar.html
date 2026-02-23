@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordenar Lista</title>
+    <script>
+        //Si nno se usa, no mostrara las cosas nuevas
+        function actualizarVecino() {
+            if (parent.frames['marcoLista'] && parent.frames['marcoLista'].pintarLista) {
+                parent.frames['marcoLista'].pintarLista();
+            }
+        }
+
+        function ordenarAscendente() {
+            let lista = parent.listaDeCompra;
+            
+            //Comapramos que los nombres de los objetos sean uno menos que el otro
+            lista.sort(function(a, b) {
+                if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) return -1;
+                if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) return 1;
+                return 0;
+            });
+
+            parent.registrarAccion("Se ordenó la lista: Ascendente");
+            actualizarVecino(); 
+        }
+
+        function ordenarDescendente() {
+            let lista = parent.listaDeCompra;
+            
+            // Hace lo mismo que arriba pero reverse invierte el orden
+            lista.sort(function(a, b) {
+                if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) return -1;
+                if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) return 1;
+                return 0;
+            });
+            lista.reverse();
+
+            parent.registrarAccion("Se ordenó la lista: Descendente");
+            actualizarVecino(); // Si no lo llamo obvio no se actualiza... 
+        }
+    </script>
+</head>
+<body>
+    <h2 style="color: steelblue">Ordenar</h2>
+    <p>Organiza tu compra:</p>
+    <button onclick="ordenarAscendente()">Orden Ascendente (A-Z)</button>
+    <button onclick="ordenarDescendente()">Orden Descendente (Z-A)</button>
+</body>
+</html>

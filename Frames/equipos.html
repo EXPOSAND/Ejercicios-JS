@@ -1,0 +1,12 @@
+<body>
+    <div>Este es el marco equipo</div>
+    <input type="text" />
+    <button type="button" onclick="sendData()">Mostrar resultados</button>
+</body>
+<script>
+    function sendData() {
+        parent.detalle.content.innerHTML = "Nuevo contenido";
+        let color=document.getElementsByTagName('input')[0].value;
+        parent.detalle.modifyData(color);
+    }
+</script>

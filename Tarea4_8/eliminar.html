@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eliminar Productos</title>
+    <script>
+      function borrarPrimero() {
+        let lista = parent.listaDeCompra;
+
+        if (lista.length === 0) {
+          alert("La lista esta vacia");
+        }
+
+        let eliminado = lista.shift(); // shift = primero
+        parent.registrarAccion("Se eliminó el primero: " + eliminado.nombre);
+
+        if (parent.frames["marcoLista"].pintarLista) {
+          parent.frames["marcoLista"].pintarLista();
+        }
+      }
+
+      function borrarUltimo() {
+        let lista = parent.listaDeCompra;
+
+        if (lista.length === 0) {
+          alert("La lista esta vacia");
+        }
+
+        let eliminado = lista.pop(); // pop=  el último
+        parent.registrarAccion("Se eliminó el último: " + eliminado.nombre);
+
+        if (parent.frames["marcoLista"].pintarLista) {
+          parent.frames["marcoLista"].pintarLista();
+        }
+      }
+
+      function borrarPorIndice() {
+        let lista = parent.listaDeCompra;
+        let NumUsuario = document.getElementById("numeroIndex").value;
+        // Convertimos a número entero
+        let indiceUsuario = parseInt(NumUsuario);
+
+        //-1 porque el numero que inserta el usuario no es el mismo indice que el array...
+        if (indiceUsuario - 1 < 0 || indiceUsuario - 1 >= lista.length) {
+          alert("No existe ningún producto en esa posición.");
+        }
+
+        // splice(indice eliminado, cantidad)
+        let eliminados = lista.splice(indiceUsuario - 1, 1);
+
+        parent.registrarAccion(
+          "Se eliminó la posición " +indiceUsuario + ": " + eliminados[0].nombre
+        );
+        if (parent.frames["marcoLista"].pintarLista) {
+          parent.frames["marcoLista"].pintarLista(); //LLamar para mostrar la lista con el articulo menos
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2 style="color: steelblue">Organizador</h2>
+    <p>Eliminar productos:</p>
+
+    <button onclick="borrarPrimero()">Borrar primer articulo</button>
+    <button onclick="borrarUltimo()">Borrar ultimo articulo</button>
+
+    <hr />
+
+    <p>Borrar posición específica:</p>
+    <input type="number" id="numeroIndex" />
+    <button onclick="borrarPorIndice()">Borrar articulo insertado</button>
+  </body>
+</html>
